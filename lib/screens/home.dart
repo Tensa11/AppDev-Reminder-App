@@ -199,7 +199,7 @@ class _HomeState extends State<Home> {
       backgroundColor: tdBGColor,
       elevation: 0,
       leading: const Icon(
-        Icons.menu,
+        Icons.bookmark_added,
         color: tdWhite,
         size: 30,
       ),
