@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_app_dev/screens/Profile.dart';
 import '../model/todo.dart';
 import '../constants/colors.dart';
 import '../widgets/todo_item.dart';
@@ -214,10 +215,29 @@ class _HomeState extends State<Home> {
         SizedBox(
           height: 40,
           width: 40,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Image.asset('assets/images/avatar.jpg'),
+          child: TextButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ProfilePage()
+                  )
+              );
+            },
+            style: TextButton.styleFrom (
+              padding: EdgeInsets.zero,
             ),
+            child: Container(
+              decoration: BoxDecoration (
+                borderRadius: BorderRadius.circular(15),
+                image: const DecorationImage (
+                  fit: BoxFit.cover,
+                  image: AssetImage (
+                    'assets/images/avatar.jpg',
+                  ),
+                ),
+              ),
+            ),
+          ),
           ),
         ]
       ),
