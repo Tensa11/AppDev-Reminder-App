@@ -29,7 +29,7 @@ class _HomePageState extends State<PicturePage> {
       appBar: AppBar(
         backgroundColor: tdBGColor,
         leading: const Icon(Icons.image_outlined),
-        title: const Center(child: Text("Pictures Permission", textAlign: TextAlign.center)),
+        title: const Center(child: Text("Photo's of Anthony", textAlign: TextAlign.center)),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
