@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:simple_app_dev/screens/Profile.dart';
 import '../model/todo.dart';
 import '../constants/colors.dart';
+import '../services/notify.dart';
 import '../widgets/todo_item.dart';
+
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -25,7 +27,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: tdBGColor,
+      backgroundColor: tdBlack,
       appBar: _buildAppBar(),
       body: Stack(
         children: [
@@ -43,10 +45,11 @@ class _HomeState extends State<Home> {
                       Container(
                         margin: const EdgeInsets.only(
                           top: 50,
-                          bottom: 20,
+                          bottom: 35,
                         ),
                         child: const Text(
-                          'What to work',
+                          textAlign: TextAlign.center,
+                          'WHAT TO WORK',
                           style: TextStyle(
                             fontSize: 30,
                             color: tdRed,
@@ -100,6 +103,7 @@ class _HomeState extends State<Home> {
                 ),
                 child: ElevatedButton(
                   onPressed: () {
+                    NotificationService().showNotification(title: 'Reminder: New work!', body: _todoController.text);
                     _addToDoItem(_todoController.text);
                   },
                   style: ElevatedButton.styleFrom(
@@ -160,7 +164,6 @@ class _HomeState extends State<Home> {
               .contains(enteredKeyword.toLowerCase()))
           .toList();
     }
-
     setState(() {
       _foundToDo = results;
       }
@@ -197,7 +200,7 @@ class _HomeState extends State<Home> {
 
   AppBar _buildAppBar() {
     return AppBar(
-      backgroundColor: tdBGColor,
+      backgroundColor: tdBlack,
       elevation: 0,
       leading: const Icon(
         Icons.bookmark_added,

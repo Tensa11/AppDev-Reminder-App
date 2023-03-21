@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:external_path/external_path.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:io';
-
 import '../constants/colors.dart';
 
 class PicturePage extends StatefulWidget {
@@ -27,13 +26,27 @@ class _HomePageState extends State<PicturePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: tdBGColor,
-        leading: const Icon(Icons.image_outlined),
-        title: const Center(child: Text("Photo's of Anthony", textAlign: TextAlign.center)),
+        backgroundColor: tdBlack,
+        // leading: const Icon(Icons.image_outlined),
+        title: const Center(child: Text("Anthony's Photos", textAlign: TextAlign.center)),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
+          // Container(
+          //   margin: const EdgeInsets.only(
+          //     top: 15,
+          //     bottom: 15,
+          //   ),
+          //   child: const Text(
+          //     'My Gallery',
+          //     style: TextStyle(
+          //       fontSize: 30,
+          //       color: tdRed,
+          //       fontWeight: FontWeight.w500,
+          //     ),
+          //   ),
+          // ),
           Expanded(
             flex: 1010,
             child: GridView.count(

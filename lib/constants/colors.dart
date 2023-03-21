@@ -7,4 +7,3 @@ const Color tdBlack = Color(0xFF3A3A3A);
 const Color tdGrey = Color(0xFF717171);
 const Color tdWhite = Color(0xFFFFFFFF);
 const Color tdDark = Color(0xFF575757);
-const Color tdBGColor = Color(0xFF3A3A3A);

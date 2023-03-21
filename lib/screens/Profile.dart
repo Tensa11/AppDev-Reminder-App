@@ -74,7 +74,7 @@ class ProfilePage extends StatelessWidget {
                                       child: Container(
                                         decoration: BoxDecoration (
                                           borderRadius: BorderRadius.circular(30),
-                                          color: const Color(0xffffffff),
+                                          color: tdWhite,
                                         ),
                                       ),
                                     ),
@@ -115,7 +115,7 @@ class ProfilePage extends StatelessWidget {
                                                   maxWidth: 219*fem,
                                                 ),
                                                 child: Text(
-                                                  'My name is Lloyd , I like Photography and Films',
+                                                  'My name is Lloyd , I like Photography and Films. Im a Student from USTP',
                                                   textAlign: TextAlign.center,
                                                   style: SafeGoogleFont (
                                                     decoration: TextDecoration.none,
@@ -134,8 +134,7 @@ class ProfilePage extends StatelessWidget {
                                           width: double.infinity,
                                           height: 40*fem,
                                           child: Row(
-                                            crossAxisAlignment: CrossAxisAlignment.center,
-                                            children: [
+                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,                                            children: [
                                               Container(
                                                 margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 20*fem, 0*fem),
                                                 child: TextButton(
@@ -153,7 +152,7 @@ class ProfilePage extends StatelessWidget {
                                                     width: 146*fem,
                                                     height: double.infinity,
                                                     decoration: BoxDecoration (
-                                                      color: tdBlack,
+                                                      color: tdRed,
                                                       borderRadius: BorderRadius.circular(50*fem),
                                                       boxShadow: [
                                                         BoxShadow(
@@ -297,7 +296,7 @@ class ProfilePage extends StatelessWidget {
                               height: 45*fem,
                               child: Container(
                                 decoration: const BoxDecoration (
-                                  color: tdBlack,
+                                  color: tdRed,
                                 ),
                               ),
                             ),
