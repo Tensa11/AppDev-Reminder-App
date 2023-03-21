@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../model/todo.dart';
 import '../constants/colors.dart';
+import '../services/notify.dart';
 
 class ToDoItem extends StatelessWidget {
   final ToDo todo;
@@ -54,6 +55,7 @@ class ToDoItem extends StatelessWidget {
             iconSize: 18,
             icon: const Icon(Icons.delete_forever_outlined),
             onPressed: () {
+              NotificationService().showNotification(title: 'Reminder: Removed!', body: todo.todoText);
               // print('Clicked on delete icon');
               onDeleteItem(todo.id);
             },

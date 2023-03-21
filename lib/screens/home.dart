@@ -236,11 +236,11 @@ class _HomeState extends State<Home> {
                   fit: BoxFit.cover,
                   image: AssetImage (
                     'assets/images/avatar.jpg',
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
           ),
         ]
       ),
