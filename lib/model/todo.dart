@@ -11,10 +11,7 @@ class ToDo {
 
   static List<ToDo> todoList() {
     return [
-      ToDo(id: '01', todoText: 'Morning Workout', isDone: true ),
-      ToDo(id: '02', todoText: 'Cook Breakfast', isDone: true ),
-      ToDo(id: '03', todoText: 'Check USTEP', ),
-      ToDo(id: '04', todoText: 'AppDev Online Meeting at 1PM', ),
+      ToDo(id: '01', todoText: 'Welcome to Re:Minder'),
     ];
   }
 }

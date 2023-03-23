@@ -1,10 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_app_dev/screens/Profile.dart';
 import '../model/todo.dart';
 import '../constants/colors.dart';
 import '../services/notify.dart';
 import '../widgets/todo_item.dart';
-
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -17,6 +18,13 @@ class _HomeState extends State<Home> {
   final todosList = ToDo.todoList();
   List<ToDo> _foundToDo = [];
   final _todoController = TextEditingController();
+
+  Future userNotes(String notes) async{
+    await FirebaseFirestore.instance.collection('notes').add({
+      'notes_title': notes,
+      }
+    );
+  }
 
   @override
   void initState() {
@@ -47,15 +55,10 @@ class _HomeState extends State<Home> {
                           top: 50,
                           bottom: 35,
                         ),
-                        child: const Text(
-                          textAlign: TextAlign.center,
-                          'WHAT TO WORK',
-                          style: TextStyle(
-                            fontSize: 30,
-                            color: tdRed,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
+                          child: Image.asset(
+                            'assets/images/Remind_Logo.png',
+                            height: 110,
+                          )
                       ),
                       for (ToDo todoo in _foundToDo.reversed)
                         ToDoItem(
@@ -102,9 +105,10 @@ class _HomeState extends State<Home> {
                   right: 20,
                 ),
                 child: ElevatedButton(
-                  onPressed: () {
-                    NotificationService().showNotification(title: 'Reminder: New work!', body: _todoController.text);
+                  onPressed: () async {
+                    FirebaseAuth.instance;
                     _addToDoItem(_todoController.text);
+                    NotificationService().showNotification(title: 'Reminder: New work!', body: _todoController.text);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: tdRed,
@@ -209,7 +213,7 @@ class _HomeState extends State<Home> {
       ),
       title: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         const Text(
-          'Reminder',
+          'Re:Mind',
           style: TextStyle(
             color: tdWhite,
             fontWeight: FontWeight.w500,
@@ -222,7 +226,7 @@ class _HomeState extends State<Home> {
             onPressed: () {
               Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const ProfilePage()
+                  MaterialPageRoute(builder: (context) => const Profile()
                   )
               );
             },

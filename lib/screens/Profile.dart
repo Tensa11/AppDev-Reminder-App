@@ -1,11 +1,18 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_app_dev/constants/colors.dart';
-import 'package:simple_app_dev/screens/picture.dart';
-import 'package:simple_app_dev/screens/home.dart';
+import 'package:simple_app_dev/main.dart';
+import 'package:simple_app_dev/screens/Photo.dart';
 import '../constants/utils.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+class Profile extends StatefulWidget {
+  const Profile({Key? key}) : super(key: key);
+
+  @override
+  State<Profile> createState() => _ProfileState();
+}
+class _ProfileState extends State<Profile> {
+  final user = FirebaseAuth.instance.currentUser!;
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +105,7 @@ class ProfilePage extends StatelessWidget {
                                               Container(
                                                 margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 0*fem, 5*fem),
                                                 child: Text(
-                                                  'Lloyd Anthony T. Salas',
+                                                  user.displayName ?? user.email!,
                                                   textAlign: TextAlign.center,
                                                   style: SafeGoogleFont (
                                                     decoration: TextDecoration.none,
@@ -134,7 +141,8 @@ class ProfilePage extends StatelessWidget {
                                           width: double.infinity,
                                           height: 40*fem,
                                           child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,                                            children: [
+                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                            children: [
                                               Container(
                                                 margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 20*fem, 0*fem),
                                                 child: TextButton(
@@ -180,9 +188,12 @@ class ProfilePage extends StatelessWidget {
                                               ),
                                               TextButton(
                                                 onPressed: () {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(builder: (context) => const Home()
+                                                  FirebaseAuth.instance.signOut().then((value){
+                                                      print("Signed Out");
+                                                    }
+                                                  );
+                                                  Navigator.push(context,
+                                                      MaterialPageRoute(builder: (context) => const SplashScreen()
                                                       )
                                                   );
                                                 },
@@ -205,7 +216,7 @@ class ProfilePage extends StatelessWidget {
                                                   ),
                                                   child: Center(
                                                     child: Text(
-                                                      'Home',
+                                                      'Sign Out',
                                                       textAlign: TextAlign.center,
                                                       style: SafeGoogleFont (
                                                         'Poppins',
@@ -304,6 +315,60 @@ class ProfilePage extends StatelessWidget {
                         ),
                       ),
                     ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 0*fem,
+                top: 27*fem,
+                child: SizedBox(
+                  width: 360*fem,
+                  height: 45*fem,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 0*fem,
+                        top: 0*fem,
+                        child: SizedBox(
+                          width: 360*fem,
+                          height: 45*fem,
+                          child: Center(
+                            child: SizedBox(
+                              width: double.infinity,
+                              height: 45*fem,
+                              child: Container(
+                                decoration: const BoxDecoration (
+                                  color: tdRed,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 0*fem,
+                top: 0*fem,
+                child: Align(
+                  child: SizedBox(
+                    width: 38*fem,
+                    height: 100*fem,
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      style: TextButton.styleFrom (
+                        padding: EdgeInsets.zero,
+                      ),
+                      child: const Icon(
+                        Icons.arrow_back_ios_new,
+                        size: 25,
+                        color: tdWhite,
+                      ),
+                    ),
                   ),
                 ),
               ),

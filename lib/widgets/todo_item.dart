@@ -21,6 +21,7 @@ class ToDoItem extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 20),
       child: ListTile(
         onTap: () {
+          NotificationService().showNotification(title: 'Reminder: Finished!', body: todo.todoText);
           // print('Clicked on Todo Item.');
           onToDoChanged(todo);
         },
